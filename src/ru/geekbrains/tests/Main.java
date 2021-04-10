@@ -17,10 +17,16 @@ public class Main {
         validateSkippingUntilLastFour(testArray5, new int[]{}, true);
         int[] testArray6 = {4, 4, 4, 4};
         validateSkippingUntilLastFour(testArray6, new int[]{}, false);
+
+        int[] testArray7 = {4, 0, 2};
+        validateForOnesAndFours(testArray7, false);
+        validateForOnesAndFours(testArray1, true);
+        validateForOnesAndFours(testArray2, false);
+        validateForOnesAndFours(testArray5, false);
     }
 
     static void validateSkippingUntilLastFour(int[] input, int[] expected, boolean expectException) {
-        System.out.println("---- Starting test\ninput: " + Arrays.toString(input) + "\nexpected: " + (expectException ? "exception" : Arrays.toString(expected)));
+        System.out.println("---- Starting test\ninput: " + Arrays.toString(input) + "\nexpected: " + (expectException ? "exception" : expected));
         try {
             int[] result = skippingUntilLastFour(input);
             if (expectException) {
@@ -39,6 +45,17 @@ public class Main {
                 System.out.println("---- Test failed, unexpected exception.");
             }
         }
+    }
+
+    static void validateForOnesAndFours(int[] input, boolean expected) {
+        System.out.println("---- Starting test\ninput: " + Arrays.toString(input) + "\nexpected: "  + expected);
+        boolean result = hasOneAndFour(input);
+        if (result == expected) {
+            System.out.println("---- Test succeeded.");
+        } else {
+            System.out.println("---- Test failed,\nexpected: " + expected + "\nresult: " + result);
+        }
+
     }
 
     static int[] skippingUntilLastFour(int[] arr) throws RuntimeException {
@@ -69,7 +86,6 @@ public class Main {
                 break;
             }
         }
-
         return hasOne && hasFour;
     }
 }
