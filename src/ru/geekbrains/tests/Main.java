@@ -26,7 +26,7 @@ public class Main {
     }
 
     static void validateSkippingUntilLastFour(int[] input, int[] expected, boolean expectException) {
-        System.out.println("---- Starting test\ninput: " + Arrays.toString(input) + "\nexpected: " + (expectException ? "exception" : expected));
+        System.out.println("---- Starting test\ninput: " + Arrays.toString(input) + "\nexpected: " + (expectException ? "exception" : Arrays.toString(expected)));
         try {
             int[] result = skippingUntilLastFour(input);
             if (expectException) {
